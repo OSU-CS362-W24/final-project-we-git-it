@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages
-on: [ push, pull_request ]
-  # ADD branches: [ main ] *for real usage*
+on:
+  push:
+    branches: [ main ]
 jobs:
   build-and-test:
     uses: ./.github/workflows/build-and-test.yml
