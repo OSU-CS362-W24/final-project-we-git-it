@@ -29,7 +29,7 @@ const {
     loadSavedChart,
     updateCurrentChartData,
     loadCurrentChartData
-} = require('../lib/chartStorage'); // Adjust the path as necessary
+} = require('../lib/chartStorage');
 
 beforeEach(() => {
     // Clear our mock localStorage before each test
@@ -37,8 +37,8 @@ beforeEach(() => {
 });
 
 test('saveChart should save a new chart at the end', () => {
-  const chart1 = { id: '1', data: [20, 30] };
-  const chart2 = { id: '2', data: [50, 60] };
+  const chart1 = {type: 'line', data: [{x:130, y: 60}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
+  const chart2 = {type: 'scatter', data: [{x:10, y: 620}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
   saveChart(chart1);
   saveChart(chart2);
   const chart = loadSavedChart(1);
@@ -46,8 +46,8 @@ test('saveChart should save a new chart at the end', () => {
 });
 
 test('saveChart should overwrite an existing chart at specified index', () => {
-  const chart1 = { id: '1', data: [20, 30] };
-  const chart2 = { id: '2', data: [50, 60] };
+  const chart1 = {type: 'line', data: [{x:10, y: 60}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
+  const chart2 = {type: 'bar', data: [{x:103, y: 602}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
   saveChart(chart1);
   saveChart(chart2, 0);
   const charts = loadAllSavedCharts();
@@ -55,9 +55,11 @@ test('saveChart should overwrite an existing chart at specified index', () => {
 });
 
 test('loadAllSavedChart should return all saved charts', () => {
-  const charts = [{ id: '1', data: [20, 30] }, { id: '2', data: [50, 60] }];
-  const chart1 = { id: '1', data: [20, 30] };
-  const chart2 = { id: '2', data: [50, 60] };
+  const charts = [{type: 'bar', data: [{x:20, y: 30}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'},
+   {type: 'line', data: [{x:10, y: 60}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'}];
+
+  const chart1 = {type: 'bar', data: [{x:20, y: 30}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
+  const chart2 = {type: 'line', data: [{x:10, y: 60}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
   saveChart(chart1);
   saveChart(chart2);
   const allCharts = loadAllSavedCharts();
@@ -65,8 +67,8 @@ test('loadAllSavedChart should return all saved charts', () => {
 });
 
 test('loadSavedChart should load a specific chart by index', () => {
-  const chart1 = { id: '1', data: [20, 30] };
-  const chart2 = { id: '2', data: [50, 60] };
+  const chart1 = {type: 'scatter', data: [{x:210, y: 604}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
+  const chart2 = {type: 'line', data: [{x:130, y: 620}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'}
   saveChart(chart1);
   saveChart(chart2);
   const loadedChart = loadSavedChart(0);
@@ -74,7 +76,7 @@ test('loadSavedChart should load a specific chart by index', () => {
 });
 
 test('updateCurrentChartData should update and loadCurrentChartData should load the current chart data', () => {
-  const currentChartData = { type: 'bar', data: [2, 3] };
+  const currentChartData = {type: 'line', data: [{x:910, y: 260}], xLabel: 'testx', yLabel: 'testy', title: 'testChart', color: 'orange'};
   updateCurrentChartData(currentChartData);
   const loadedData = loadCurrentChartData();
   expect(loadedData).toEqual(currentChartData);
