@@ -7,7 +7,7 @@
     "start": "webpack serve --open",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:e2e": "webpack-dev-server start http://localhost:8080 cy:run"
+    "cy:e2e": "start-test start http://localhost:8080 cy:run"
   },
   "author": "We Git It OSU",
   "devDependencies": {
@@ -18,7 +18,8 @@
     "style-loader": "^3.3.3",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
+    "webpack-dev-server": "^4.15.0",
+    "start-server-and-test": "^2.0.3"
   },
   "jest": {
     "moduleNameMapper": {
