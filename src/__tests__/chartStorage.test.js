@@ -29,7 +29,7 @@ const {
     loadSavedChart,
     updateCurrentChartData,
     loadCurrentChartData
-} = require('./chartStorage'); // Adjust the path as necessary
+} = require('../lib/chartStorage'); // Adjust the path as necessary
 
 beforeEach(() => {
     // Clear our mock localStorage before each test

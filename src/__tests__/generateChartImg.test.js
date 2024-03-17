@@ -1,4 +1,4 @@
-const generateChartImg = require('./generateChartImg'); // Adjust the path as necessary
+const generateChartImg = require('../lib/generateChartImg'); // Adjust the path as necessary
 
 test('generateChartImg returns a URL for the generated chart image', async () => {
   // Note: This test will make a real API request and may be flaky. Use with caution.

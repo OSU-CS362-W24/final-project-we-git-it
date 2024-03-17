@@ -1,4 +1,4 @@
-const sortPoints = require('./sortPoints'); // Adjust the path as necessary
+const sortPoints = require('../lib/sortPoints'); // Adjust the path as necessary
 
 test('sortPoints should correctly sort an array of points by ascending X value', () => {
   const points = [
