@@ -1,0 +1,8 @@
+name: Test and build pushed code
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-test:
+    uses: ./.github/workflows/build-and-test.yml
