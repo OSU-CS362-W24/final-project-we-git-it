@@ -16,7 +16,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       # unit tests
-      # - run: npm test
+      - run: npm test
       # integration tests
       # - run: npm test:integration
       # end to end tests
