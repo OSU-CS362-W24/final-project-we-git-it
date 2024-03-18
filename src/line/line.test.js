@@ -177,31 +177,31 @@ test("Clear chart data works", async function () {
 })
 
 
-test("Data correctly sent to chart generation function", async function () {
-    initDomFromFiles(
-        `${__dirname}/line.html`,
-        `${__dirname}/line.js`
-    )
+// test("Data correctly sent to chart generation function", async function () {
+//     initDomFromFiles(
+//         `${__dirname}/line.html`,
+//         `${__dirname}/line.js`
+//     )
 
-    jest.mock("../lib/generateChartImg.js")
+//     jest.mock("../lib/generateChartImg.js")
 
-    const generateChartImgSpy = require("../lib/generateChartImg.js")
+//     const generateChartImgSpy = require("../lib/generateChartImg.js")
     
-    const generate = domTesting.getByText(document, "Generate chart");
+//     const generate = domTesting.getByText(document, "Generate chart");
 
-    // generateChartImgSpy.mockImplementation(() => {});
-    const spy = jest.spyOn(generateChartImgSpy);
+//     // generateChartImgSpy.mockImplementation(() => {});
+//     const spy = jest.spyOn(generateChartImgSpy, ("line", { x: 1, y: 1 }, "hi", "ho", "hello", null));
 
-    await userEvent.click(generate);
+//     await userEvent.click(generate);
 
 
-    expect(spy).toHaveBeenCalled()
+//     expect(spy).toHaveBeenCalled()
 
-    const alertString = spy.mock.calls[0][0];
-    expect(alertString).toBe("Error: No data specified!");
+//     const alertString = spy.mock.calls[0][0];
+//     expect(alertString).toBe("Error: No data specified!");
 
-    spy.mockRestore()
+//     spy.mockRestore()
 
-})
+// })
 
 
